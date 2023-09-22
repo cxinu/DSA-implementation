@@ -19,7 +19,7 @@ class PriorityQueue {
     int dequeue();
     void sort();
 
-    // ignore
+    // ignore, only for checking output
     void display();
 };
 
@@ -66,7 +66,9 @@ void PriorityQueue::sort() {
     }
 }
 
+// displays current state of array
 void PriorityQueue::display() {
+    cout << "PQueue: ";
     if (front == -1) {
         cout << "Empty" << endl;
         return;
@@ -82,11 +84,13 @@ int main() {
     pq.enqueue(34, 7);
     pq.enqueue(89, 1);
     pq.enqueue(42, 8);
-    pq.enqueue(69, 1);
+    pq.enqueue(69, 1);   // Sorted in priority order
 
     pq.dequeue();
     pq.dequeue();
     pq.dequeue();
     pq.dequeue();
     pq.dequeue();
+
+    return 0;
 }

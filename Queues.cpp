@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_SIZE = 3;
+const int MAX_SIZE = 4;
 
 class Queue {
     int front;
@@ -13,7 +13,7 @@ class Queue {
     void enqueue(int x);
     int dequeue();
 
-    // ignore
+    // ignore, only for checking output
     void display();
 };
 
@@ -35,16 +35,18 @@ int Queue::dequeue() {
         cout << "Queue is empty" << endl;
         return -1;
     }
-    int temp = arr[front];
+    int removedItem = arr[front];
     if (front == rear)
         front = rear = -1;
     else
         front++;
     display();
-    return temp;
+    return removedItem;
 }
 
+// displays current state of array
 void Queue::display() {
+    cout << "Queue: ";
     if (front == -1)
         cout << "Empty";
     for (int i = front; i <= rear && front != -1; i++)
@@ -54,13 +56,23 @@ void Queue::display() {
 
 int main() {
     Queue q;
+
     q.enqueue(1);
     q.enqueue(2);
     q.enqueue(3);
     q.enqueue(4);
+    q.enqueue(5);   // Queue is full can't Push
 
     q.dequeue();
     q.dequeue();
+    q.enqueue(5);   // Queue is still full, because rear end is full
+
     q.dequeue();
     q.dequeue();
+    q.dequeue();   // Queue is empty, now front and rear resets back to -1
+
+    q.enqueue(5);   // Queue is reset, can push elements again
+    q.enqueue(6);
+
+    return 0;
 }

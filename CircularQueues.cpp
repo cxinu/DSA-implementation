@@ -14,7 +14,7 @@ class CircularQueue {
     void enqueue(int x);
     int dequeue();
 
-    // ignore
+    // ignore, only for checking output
     void display();
 };
 
@@ -40,31 +40,38 @@ int CircularQueue::dequeue() {
     if (front == rear)
         front = rear = -1;
     else
-        front++;
+        front = (front + 1) % MAX_SIZE;
     display();
     return temp;
 }
 
+// displays current state of array
 void CircularQueue::display() {
+    cout << "CQueue: ";
     if (front == -1) {
-        cout << "Empty Queue" << endl;
-    } else {
-        int i;
-        for (i = front; i != rear; i = (i + 1) % MAX_SIZE)
-            cout << arr[i] << " ";
-        cout << arr[i] << endl;
+        cout << "Empty" << endl;
+        return;
     }
+    int i;
+    for (i = front; i != rear; i = (i + 1) % MAX_SIZE)
+        cout << arr[i] << " ";
+    cout << arr[i] << endl;
 }
 
 int main() {
-    CircularQueue c;
-    c.enqueue(1);
-    c.enqueue(2);
-    c.enqueue(3);
-    c.enqueue(4);
+    CircularQueue cq;
+    cq.enqueue(1);
+    cq.enqueue(2);
+    cq.enqueue(3);
 
-    c.dequeue();
-    c.dequeue();
-    c.dequeue();
-    c.dequeue();
+    cq.dequeue();   // Circualr Queue No Issue after pop
+    cq.enqueue(4);
+    cq.enqueue(5);   // MAX memory usage, Queue is full
+
+    cq.dequeue();
+    cq.dequeue();
+    cq.dequeue();
+    cq.dequeue();
+
+    return 0;
 }

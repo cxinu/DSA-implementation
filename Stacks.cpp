@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int const MAX_SIZE = 5;
+int const MAX_SIZE = 4;
 
 class Stack {
     int top;
@@ -12,7 +12,7 @@ class Stack {
     void push(int value);
     int pop();
 
-    // ignore
+    // ignore, only for checking output
     void display();
 };
 
@@ -30,12 +30,14 @@ int Stack::pop() {
         cout << "Stack is empty" << endl;
         return -1;
     }
-    int temp = arr[top--];
+    int removedItem = arr[top--];
     display();
-    return temp;
+    return removedItem;
 }
 
+// displays current state of array
 void Stack::display() {
+    cout << "Stack: ";
     if (top == -1) {
         cout << "Empty" << endl;
         return;
@@ -47,20 +49,21 @@ void Stack::display() {
 
 int main() {
     Stack s;
-    s.pop();   // stack empty
+
     s.push(3);
     s.push(1);
+    s.push(8);
+    s.pop();
+
     s.push(4);
-    s.push(9);
     s.push(6);
-    s.push(7);   // stack full
+    s.push(9);   // stack full, can't push (9)
 
     s.pop();
     s.pop();
     s.pop();
     s.pop();
-    s.pop();
-    s.pop();   // stack empty
+    s.pop();   // stack empty, can't pop() any element
 
     return 0;
 }
