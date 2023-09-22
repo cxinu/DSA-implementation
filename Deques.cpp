@@ -1,123 +1,132 @@
 #include <iostream>
 using namespace std;
 
+int const MAX_SIZE = 5;
+
 class Deque {
   private:
-    int *arr;
+    int arr[MAX_SIZE];
     int front;
     int rear;
-    int capacity;
+    int size;   // current size
 
   public:
-    Deque(int size);
-    ~Deque();
+    Deque() {
+        front = rear = -1;
+        size = 0;
+    };
     bool isEmpty();
     bool isFull();
+
     void pushFront(int x);
     void pushBack(int x);
     int popFront();
     int popBack();
+
+    // ignore
+    void display();
 };
-
-Deque::Deque(int size) {
-    capacity = size;
-    arr = new int[capacity];
-    front = -1;
-    rear = -1;
-}
-
-Deque::~Deque() { delete[] arr; }
 
 bool Deque::isEmpty() { return front == -1; }
 
 bool Deque::isFull() {
-    return (front == 0 && rear == capacity - 1) || (front == rear + 1);
+    // IMPORTANT !!! this won't work in Deque, only works in Circular
+    // return (front == 0 && rear == MAX_SIZE - 1) || (front == rear + 1);
+
+    return size == MAX_SIZE;
 }
 
 void Deque::pushFront(int x) {
     if (isFull()) {
-        cout << "Deque is full. Cannot push to front." << endl;
+        cout << "Deque is full. Can't push to front." << endl;
         return;
     }
-
-    if (front == -1) {
+    if (front == -1)
         front = rear = 0;
-    } else if (front == 0) {
-        front = capacity - 1;
-    } else {
-        front--;
-    }
-
+    else
+        front = (front - 1 + MAX_SIZE) % MAX_SIZE;
     arr[front] = x;
+    size++;
+    display();
 }
 
 void Deque::pushBack(int x) {
     if (isFull()) {
-        cout << "Deque is full. Cannot push to back." << endl;
+        cout << "Deque is full. Can't push to back." << endl;
         return;
     }
-
-    if (front == -1) {
+    if (front == -1)
         front = rear = 0;
-    } else if (rear == capacity - 1) {
-        rear = 0;
-    } else {
-        rear++;
-    }
-
+    else
+        rear = (rear + 1) % MAX_SIZE;
     arr[rear] = x;
+    size++;
+    display();
 }
 
 int Deque::popFront() {
     if (isEmpty()) {
-        cout << "Deque is empty. Cannot pop from front." << endl;
-        return -1;   // Return a sentinel value for an empty deque
+        cout << "Deque is empty." << endl;
+        return -1;
     }
-
     int removedItem = arr[front];
-
-    if (front == rear) {
-        front = rear =
-            -1;   // Reset the deque if it becomes empty after this pop
-    } else if (front == capacity - 1) {
-        front = 0;
-    } else {
-        front++;
-    }
-
+    if (front == rear)
+        front = rear = -1;
+    else
+        front = (front + 1) % MAX_SIZE;
+    size--;
+    display();
     return removedItem;
 }
 
 int Deque::popBack() {
     if (isEmpty()) {
-        cout << "Deque is empty. Cannot pop from back." << endl;
-        return -1;   // Return a sentinel value for an empty deque
+        cout << "Deque is empty." << endl;
+        return -1;
     }
-
     int removedItem = arr[rear];
-
-    if (front == rear) {
-        front = rear =
-            -1;   // Reset the deque if it becomes empty after this pop
-    } else if (rear == 0) {
-        rear = capacity - 1;
-    } else {
-        rear--;
-    }
-
+    if (front == rear)
+        front = rear = -1;
+    else
+        rear = (rear - 1 + MAX_SIZE) % MAX_SIZE;
+    size--;
+    display();
     return removedItem;
 }
 
+// Deque display function, current state
+void Deque::display() {
+    cout << "Deque: ";
+    if (isEmpty()) {
+        cout << "Empty" << endl;
+        return;
+    }
+    if (rear >= front) {
+        for (int i = front; i <= rear; i++)
+            cout << arr[i] << " ";
+    } else {
+        for (int i = front; i < MAX_SIZE; i++)
+            cout << arr[i] << " ";
+        for (int i = 0; i <= rear; i++)
+            cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
 int main() {
-    Deque dq(5);   // Create a deque with a maximum capacity of 5
+    Deque dq;
 
     dq.pushFront(1);
     dq.pushBack(2);
     dq.pushFront(3);
     dq.pushBack(4);
+    dq.pushBack(5);
 
-    cout << "Popped from front: " << dq.popFront() << endl;
-    cout << "Popped from back: " << dq.popBack() << endl;
+    dq.pushBack(9);
+    dq.pushFront(3);
+
+    dq.popBack();
+    dq.popFront();
 
     return 0;
 }
