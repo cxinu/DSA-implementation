@@ -15,20 +15,28 @@ class LinkedList {
 
   public:
     LinkedList() { head = nullptr; }
+    ~LinkedList() {
+        Node *temp;
+        while (head != nullptr) {
+            temp = head;
+            head = temp->next;
+            delete temp;
+        }
+    }
 
-    void insertAtBeginning(int value);
-    void insertAtEnd(int value);
-    void insertAtPosition(int value, int position);
+    void insert_begin(int value);
+    void insert_end(int value);
+    void insert_pos(int value, int position);
 
-    void deleteFromBeginning();
-    void deleteFromEnd();
-    void deleteFromPosition(int position);
+    void delete_begin();
+    void delete_end();
+    void delete_pos(int position);
 
     void display();
 };
 
 // Insert a node at the beginning of the list
-void LinkedList::insertAtBeginning(int value) {
+void LinkedList::insert_begin(int value) {
     Node *newNode = new Node;
     newNode->data = value;
     newNode->next = head;
@@ -36,7 +44,7 @@ void LinkedList::insertAtBeginning(int value) {
 }
 
 // Insert a node at the end of the list
-void LinkedList::insertAtEnd(int value) {
+void LinkedList::insert_end(int value) {
     Node *newNode = new Node;
     newNode->data = value;
     newNode->next = nullptr;
@@ -53,37 +61,32 @@ void LinkedList::insertAtEnd(int value) {
     current->next = newNode;
 }
 
-// Insert a node at a specific position in the list
-void LinkedList::insertAtPosition(int value, int position) {
-    if (position < 1) {
-        cout << "Invalid position!" << endl;
-        return;
-    }
-
-    if (position == 1) {
-        insertAtBeginning(value);
-        return;
-    }
-
+// Insert a node at a specific (xth) position in the list
+void LinkedList::insert_pos(int value, int position) {
     Node *newNode = new Node;
     newNode->data = value;
 
-    Node *current = head;
-    for (int i = 1; i < position - 1 && current != nullptr; i++) {
-        current = current->next;
-    }
-
-    if (current == nullptr) {
-        cout << "Invalid position!" << endl;
+    if (position == 1) {
+        newNode->next = head;
+        head = newNode;
         return;
     }
 
-    newNode->next = current->next;
-    current->next = newNode;
+    Node *prev_node = head;
+    for (int i = 1; i < position - 1; i++) {
+        prev_node = prev_node->next;
+        if (prev_node == NULL) {
+            cout << "Invalid position" << endl;
+            return;
+        }
+    }
+
+    newNode->next = prev_node->next;
+    prev_node->next = newNode;
 }
 
 // Delete a node from the beginning of the list
-void LinkedList::deleteFromBeginning() {
+void LinkedList::delete_begin() {
     if (head == nullptr) {
         cout << "List is empty!" << endl;
         return;
@@ -96,7 +99,7 @@ void LinkedList::deleteFromBeginning() {
 }
 
 // Delete a node from the end of the list
-void LinkedList::deleteFromEnd() {
+void LinkedList::delete_end() {
     if (head == nullptr) {
         cout << "List is empty!" << endl;
         return;
@@ -109,25 +112,25 @@ void LinkedList::deleteFromEnd() {
     }
 
     Node *current = head;
-
     while (current->next->next != nullptr) {
         current = current->next;
     }
 
     delete current->next;
-
     current->next = nullptr;
 }
 
 // Delete a node from a specific position in the list
-void LinkedList::deleteFromPosition(int position) {
-    if (position < 1) {
-        cout << "Invalid position!" << endl;
+void LinkedList::delete_pos(int position) {
+    if (head == NULL) {
+        cout << "List is empty" << endl;
         return;
     }
 
     if (position == 1) {
-        deleteFromBeginning();
+        Node *temp = head;
+        head = temp->next;
+        delete temp;
         return;
     }
 
@@ -143,7 +146,6 @@ void LinkedList::deleteFromPosition(int position) {
     }
 
     Node *temp = current->next;
-
     current->next = temp->next;
 
     delete temp;
@@ -168,28 +170,28 @@ int main() {
 
     LinkedList myList;
 
-    myList.insertAtEnd(5);
-    myList.insertAtEnd(10);
-    myList.insertAtEnd(15);
+    myList.insert_end(5);
+    myList.insert_end(10);
+    myList.insert_end(15);
 
     myList.display();
 
-    myList.insertAtBeginning(0);
+    myList.insert_begin(0);
     myList.display();
 
-    myList.insertAtPosition(7, 2);
+    myList.insert_pos(7, 2);
     myList.display();
 
-    myList.deleteFromBeginning();
+    myList.delete_begin();
     myList.display();
 
-    myList.deleteFromEnd();
+    myList.delete_end();
     myList.display();
 
-    myList.deleteFromPosition(2);
+    myList.delete_pos(2);
     myList.display();
 
-    myList.deleteFromPosition(10);
+    myList.delete_pos(10);
 
     return 0;
 }
