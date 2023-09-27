@@ -13,6 +13,13 @@ class Stack {
 
   public:
     Stack() { top = nullptr; }
+    ~Stack() {
+        while (top != nullptr) {
+            Node *temp = top;
+            top = top->next;
+            delete temp;
+        }
+    }
 
     void push(int data);
     void pop();

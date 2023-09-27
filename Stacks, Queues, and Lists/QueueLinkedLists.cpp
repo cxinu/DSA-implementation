@@ -14,6 +14,14 @@ class Queue {
 
   public:
     Queue() { front = rear = nullptr; }
+    ~Queue() {
+        while (front != nullptr) {
+            Node *temp = front;
+            front = front->next;
+            delete temp;
+        }
+        rear = nullptr;
+    }
 
     void enqueue(int data);
     int dequeue();
