@@ -14,48 +14,52 @@ class Stack {
   public:
     Stack() { top = nullptr; }
 
-    void push(int data) {
-        Node *newNode = new Node();
-        newNode->data = data;
-        newNode->next = top;
-        top = newNode;
-    }
+    void push(int data);
+    void pop();
 
-    bool isEmpty() { return top == nullptr; }
-
-    int peek() {
-        if (isEmpty()) {
-            cout << "Stack is empty." << endl;
-            return -1;
-        } else {
-            return top->data;
-        }
-    }
-
-    void pop() {
-        if (isEmpty()) {
-            cout << "Stack is empty." << endl;
-        } else {
-            Node *temp = top;
-            top = top->next;
-            delete temp;
-        }
-    }
-
-    void display() {
-        if (isEmpty()) {
-            cout << "Stack is empty." << endl;
-            return;
-        }
-
-        Node *temp = top;
-        while (temp != nullptr) {
-            cout << temp->data << " ";
-            temp = temp->next;
-        }
-        cout << endl;
-    }
+    int peek();
+    void display();
 };
+
+void Stack::push(int data) {
+    Node *newNode = new Node();
+    newNode->data = data;
+    newNode->next = top;
+    top = newNode;
+}
+
+void Stack::pop() {
+    if (top == nullptr) {
+        cout << "Stack is empty." << endl;
+    } else {
+        Node *temp = top;
+        top = top->next;
+        delete temp;
+    }
+}
+
+int Stack::peek() {
+    if (top == nullptr) {
+        cout << "Stack is empty." << endl;
+        return -1;
+    } else {
+        return top->data;
+    }
+}
+
+void Stack::display() {
+    if (top == nullptr) {
+        cout << "Stack is empty." << endl;
+        return;
+    }
+
+    Node *temp = top;
+    while (temp != nullptr) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
 
 int main() {
     Stack stack;

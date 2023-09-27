@@ -13,19 +13,15 @@ class Queue {
     Node *rear;
 
   public:
-    Queue() {
-        front = nullptr;
-        rear = nullptr;
-    }
+    Queue() { front = rear = nullptr; }
 
     void enqueue(int data) {
         Node *newNode = new Node();
         newNode->data = data;
         newNode->next = nullptr;
 
-        if (rear == nullptr) {
-            front = newNode;
-            rear = newNode;
+        if (front == nullptr) {
+            front = rear = newNode;
         } else {
             rear->next = newNode;
             rear = newNode;
@@ -35,23 +31,22 @@ class Queue {
     bool isEmpty() { return front == nullptr; }
 
     int dequeue() {
-        if (!isEmpty()) {
-            Node *temp = front;
-            int data = temp->data;
-
-            if (front == rear) {
-                front = nullptr;
-                rear = nullptr;
-            } else {
-                front = front->next;
-            }
-
-            delete temp;
-            return data;
-        } else {
+        if (isEmpty()) {
             cout << "Queue is empty." << endl;
             return -1;
         }
+
+        Node *temp = front;
+        int data = temp->data;
+
+        if (front == rear) {
+            front = rear = nullptr;
+        } else {
+            front = front->next;
+        }
+
+        delete temp;
+        return data;
     }
 
     void display() {
