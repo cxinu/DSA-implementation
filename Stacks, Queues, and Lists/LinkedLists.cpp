@@ -16,10 +16,9 @@ class LinkedList {
   public:
     LinkedList() { head = nullptr; }
     ~LinkedList() {
-        Node *temp;
         while (head != nullptr) {
-            temp = head;
-            head = temp->next;
+            Node *temp = head;
+            head = head->next;
             delete temp;
         }
     }
