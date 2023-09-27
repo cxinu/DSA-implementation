@@ -1,20 +1,49 @@
-# DSA-implementation
+# DSA Implementation
 
-This repository contains my implementations of various data structures and algorithms in C++. The code is organized into four folders, each corresponding to a different topic:
+This repository contains my implementation of various data structures and algorithms (DSA) in C++. The code is organized according to the topics covered in my DSA course syllabus.
 
-- **Stacks, Queues, and Lists**: This folder contains the implementations of linear data structures such as stacks, queues, linked lists, circular lists, and doubly linked lists. These data structures allow insertion and deletion of elements at specific positions.
-- **Sorting, Searching, and Hashing**: This folder contains the implementations of algorithms for sorting, searching, and hashing data. Sorting algorithms arrange elements in a certain order, such as ascending or descending. Searching algorithms find an element in a collection of data, such as linear search or binary search. Hashing algorithms map data to a fixed-size value, such as hash tables or bloom filters.
-- **Trees**: This folder contains the implementations of tree data structures and algorithms. Trees are hierarchical data structures that consist of nodes and edges. Some examples of trees are binary trees, binary search trees, AVL trees, red-black trees, and heaps. Tree algorithms perform operations on trees, such as traversal, insertion, deletion, and balancing.
-- **Graphs**: This folder contains the implementations of graph data structures and algorithms. Graphs are data structures that consist of vertices and edges. Some examples of graphs are directed graphs, undirected graphs, weighted graphs, and adjacency lists. Graph algorithms perform operations on graphs, such as traversal, shortest path, minimum spanning tree, and topological sorting.
+## Table of Contents
 
-## How to run the code
+- Stacks, Queues, and Lists
+- Sorting, Searching, and Hashing
+- Trees and Graphs
 
-To run the code in this repository, you need to have a C++ compiler installed on your system. You can use any IDE or text editor of your choice to edit the code. To compile and run the code from the command line, follow these steps:
+## Stacks, Queues, and Lists
 
-- Navigate to the folder that contains the code file you want to run.
-- Type `g++ -o output filename.cpp` to compile the code, where `output` is the name of the executable file and `filename.cpp` is the name of the code file.
-- Type `./output` to run the executable file and see the output.
+This folder contains the implementation of stack, queue, and linked list data structures. The code files are as follows:
 
-## Contact
+- `Stacks.cpp`: Implementation of a stack using an array.
+- `Queues.cpp`: Implementation of a queue using an array.
+- `CircularQueues.cpp`: Implementation of a circular queue using an array.
+- `PriorityQueues.cpp`: Implementation of a priority queue using an array.
+- `Deques.cpp`: Implementation of a double ended queue using an array.
+- `LinkedLists.cpp`: Implementation of a singly linked list.
+- `StackLinkedLists.cpp`: Implementation of a stack using linked list.
+- `QueueLinkedLists.cpp`: Implementation of a queue using linked list.
+- `DoublyLinkedLists.cpp`: Implementation of a doubly linked list.
 
-If you have any questions or suggestions about this repository, feel free to contact me at cxinu3099@gmail.com.
+## Sorting, Searching, and Hashing
+
+This folder contains the implementation of sorting, searching, and hashing algorithms. The code files are as follows:
+
+- `Sorting.cpp`: Implementation of various sorting algorithms such as bubble sort, insertion sort, merge sort, quicksort, etc.
+- `Searching.cpp`: Implementation of various searching algorithms such as linear search, binary search, etc.
+- `Hashing.cpp`: Implementation of hash tables and hashing algorithms.
+
+## Trees and Graphs
+
+This folder contains the implementation of tree and graph data structures. The code files are as follows:
+
+- `BinaryTree.cpp`: Implementation of a binary tree data structure.
+- `AVLTree.cpp`: Implementation of an AVL tree data structure.
+- `Graph.cpp`: Implementation of a graph data structure.
+
+Feel free to explore the code files in each folder to understand the implementation details. You can use this repository as a reference for your DSA studies or as a starting point for your own projects.
+
+## Contributing
+
+If you find any issues or have suggestions for improvement, feel free to open an issue or submit a pull request. Contributions are always welcome!
+
+## License
+
+This project is licensed under the MIT License.
