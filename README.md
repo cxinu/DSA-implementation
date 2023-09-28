@@ -34,17 +34,24 @@ This folder contains the implementation of stack, queue, and linked list data st
 
 This folder contains the implementation of sorting, searching, and hashing algorithms. The code files are as follows:
 
-- `Sorting.cpp`: Implementation of various sorting algorithms such as bubble sort, insertion sort, merge sort, quicksort, etc.
-- `Searching.cpp`: Implementation of various searching algorithms such as linear search, binary search, etc.
-- `Hashing.cpp`: Implementation of hash tables and hashing algorithms.
+- [`Array.cpp`](Sorting,%20Searching,%20and%20Hashing/Array.cpp): Implementation of Array class to be used for other implemented Algorithms.
+
+#### Searching
+
+- [`LinearSearch.cpp`](Sorting,%20Searching,%20and%20Hashing/LinearSearch.cpp): Implementation of linear search algorithm.
+- [`BinarySearch.cpp`](Sorting,%20Searching,%20and%20Hashing/BinarySearch.cpp): Implementation of binary search algorithm.
+
+#### Sorting
+
+- [`BubbleSort.cpp`](Sorting,%20Searching,%20and%20Hashing/BubbleSort.cpp): Implementation of bubble sort algorithm.
 
 ## Trees and Graphs
 
 This folder contains the implementation of tree and graph data structures. The code files are as follows:
 
-- `BinaryTree.cpp`: Implementation of a binary tree data structure.
-- `AVLTree.cpp`: Implementation of an AVL tree data structure.
-- `Graph.cpp`: Implementation of a graph data structure.
+- `BinaryTree.cpp`: To be implemented.
+- `AVLTree.cpp`: To be implemented.
+- `Graph.cpp`: To be implemented.
 
 Feel free to explore the code files in each folder to understand the implementation details. You can use this repository as a reference for your DSA studies or as a starting point for your own projects.
 
