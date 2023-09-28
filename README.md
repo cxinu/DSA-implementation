@@ -12,11 +12,19 @@ This repository contains my implementation of various data structures and algori
 
 This folder contains the implementation of stack, queue, and linked list data structures. The code files are as follows:
 
+#### Stacks
+
 - [`Stacks.cpp`](Stacks,%20Queues,%20and%20Lists/Stacks.cpp): Implementation of a stack using an array.
+
+#### Queues
+
 - [`Queues.cpp`](Stacks,%20Queues,%20and%20Lists/Queues.cpp): Implementation of a queue using an array.
 - [`CircularQueues.cpp`](Stacks,%20Queues,%20and%20Lists/CircularQueues.cpp): Implementation of a circular queue using an array.
 - [`PriorityQueues.cpp`](Stacks,%20Queues,%20and%20Lists/PriorityQueues.cpp): Implementation of a priority queue using an array.
 - [`Deques.cpp`](Stacks,%20Queues,%20and%20Lists/Deques.cpp): Implementation of a double ended queue using an array.
+
+#### Lists
+
 - [`LinkedLists.cpp`](Stacks,%20Queues,%20and%20Lists/LinkedLists.cpp): Implementation of a singly linked list.
 - [`StackLinkedLists.cpp`](Stacks,%20Queues,%20and%20Lists/StackLinkedLists.cpp): Implementation of a stack using linked list.
 - [`QueueLinkedLists.cpp`](Stacks,%20Queues,%20and%20Lists/QueueLinkedLists.cpp): Implementation of a queue using linked list.
