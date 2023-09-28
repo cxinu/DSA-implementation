@@ -1,6 +1,33 @@
-#include "Array.h"
 #include <iostream>
 using namespace std;
+
+class Array {
+  private:
+    int *arr;
+    int max;
+    int size;
+
+  public:
+    Array(int size);
+    ~Array();
+
+    void insert(int value);
+    void remove();
+    void display();
+
+    // Sorting Algorithms
+    void bubbleSort();
+    void selectionSort();
+    void insertionSort();
+    void mergSort();
+    void quickSort();
+    void heapSort();
+    void radixSort();
+
+    // Searching Algorithms
+    int linearSearch(int value);
+    int binarySearch(int value, int lower, int upper);
+};
 
 Array::Array(int size) {
     arr = new int[size];
@@ -9,7 +36,7 @@ Array::Array(int size) {
 }
 
 void Array::insert(int value) {
-    if (size == max - 1) {
+    if (size == max) {
         cout << "Array full" << endl;
         return;
     }
