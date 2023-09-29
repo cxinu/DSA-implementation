@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_SIZE = 4;
+const int MAX_SIZE = 5;
 
 class Queue {
     int front;
@@ -13,7 +13,6 @@ class Queue {
     void enqueue(int x);
     int dequeue();
 
-    // ignore, only for checking output
     void display();
 };
 
@@ -22,12 +21,14 @@ void Queue::enqueue(int x) {
         cout << "Queue is full" << endl;
         return;
     }
-    if (front == -1)
+
+    if (front == -1) {
         front = rear = 0;
-    else
+    } else {
         rear++;
+    }
+
     arr[rear] = x;
-    display();
 }
 
 int Queue::dequeue() {
@@ -35,22 +36,28 @@ int Queue::dequeue() {
         cout << "Queue is empty" << endl;
         return -1;
     }
-    int removedItem = arr[front];
-    if (front == rear)
+
+    int temp = arr[front];
+
+    if (front == rear) {
         front = rear = -1;
-    else
+    } else {
         front++;
-    display();
-    return removedItem;
+    }
+
+    return temp;
 }
 
 // displays current state of array
 void Queue::display() {
     cout << "Queue: ";
+
     if (front == -1)
         cout << "Empty";
+
     for (int i = front; i <= rear && front != -1; i++)
         cout << arr[i] << " ";
+
     cout << endl;
 }
 
@@ -61,18 +68,29 @@ int main() {
     q.enqueue(2);
     q.enqueue(3);
     q.enqueue(4);
-    q.enqueue(5);   // Queue is full can't Push
+    q.enqueue(5);
+
+    // Queue is full
+    q.display();
 
     q.dequeue();
     q.dequeue();
-    q.enqueue(5);   // Queue is still full, because rear end is full
+    q.display();
+
+    // Queue is still full, because rear end is full
+    q.enqueue(5);
 
     q.dequeue();
     q.dequeue();
-    q.dequeue();   // Queue is empty, now front and rear resets back to -1
+    q.dequeue();
 
-    q.enqueue(5);   // Queue is reset, can push elements again
+    // Queue is empty, now front = rear = -1
+    q.display();
+
+    // can push elements again
+    q.enqueue(5);
     q.enqueue(6);
+    q.display();
 
     return 0;
 }
