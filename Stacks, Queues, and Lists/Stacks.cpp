@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int const MAX_SIZE = 4;
+int const MAX_SIZE = 5;
 
 class Stack {
     int top;
@@ -12,17 +12,17 @@ class Stack {
     void push(int value);
     int pop();
 
-    // ignore, only for checking output
     void display();
 };
 
 void Stack::push(int value) {
-    if (top >= MAX_SIZE - 1) {
+    if (top == MAX_SIZE - 1) {
         cout << "Stack is full" << endl;
         return;
     }
-    arr[++top] = value;
-    display();
+
+    top++;
+    arr[top] = value;
 }
 
 int Stack::pop() {
@@ -30,20 +30,24 @@ int Stack::pop() {
         cout << "Stack is empty" << endl;
         return -1;
     }
-    int removedItem = arr[top--];
-    display();
-    return removedItem;
+
+    int temp = arr[top];
+    top--;
+    return temp;
 }
 
 // displays current state of array
 void Stack::display() {
     cout << "Stack: ";
+
     if (top == -1) {
         cout << "Empty" << endl;
         return;
     }
+
     for (int i = 0; i <= top; i++)
         cout << arr[i] << " ";
+
     cout << endl;
 }
 
@@ -53,17 +57,23 @@ int main() {
     s.push(3);
     s.push(1);
     s.push(8);
-    s.pop();
+    s.display();
 
     s.push(4);
     s.push(6);
-    s.push(9);   // stack full, can't push (9)
+
+    // stack full, can't push (9)
+    s.push(9);
+    s.display();
 
     s.pop();
     s.pop();
     s.pop();
     s.pop();
-    s.pop();   // stack empty, can't pop() any element
+    s.pop();
+
+    // stack empty
+    s.display();
 
     return 0;
 }
