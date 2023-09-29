@@ -15,11 +15,11 @@ class PriorityQueue {
 
   public:
     PriorityQueue() { front = rear = -1; }
+
     void enqueue(int x, int p);
     int dequeue();
     void sort();
 
-    // ignore, only for checking output
     void display();
 };
 
@@ -28,39 +28,46 @@ void PriorityQueue::enqueue(int x, int p) {
         cout << "Queue is full" << endl;
         return;
     }
-    if (front == -1)
+
+    if (front == -1) {
         front = rear = 0;
-    else
+    } else {
         rear++;
+    }
+
     item newItem;
     newItem.data = x;
     newItem.p_no = p;
     arr[rear] = newItem;
+
     sort();
-    display();
 }
 
 int PriorityQueue::dequeue() {
     if (front == -1) {
-        cout << "Queue is Empty" << endl;
         return -1;
     }
+
     int temp = arr[front].data;
-    if (front == rear)
+
+    if (front == rear) {
         front = rear = -1;
-    else
+    } else {
         front++;
-    display();
+    }
+
     return temp;
 }
 
+// Bubble sort
 void PriorityQueue::sort() {
     for (int i = front; i < rear; i++) {
-        for (int j = i + 1; j <= rear; j++) {
-            if (arr[i].p_no < arr[j].p_no) {
-                item temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+        for (int j = 0; j < rear - i; j++) {
+            if (arr[j].p_no > arr[j + 1].p_no) {
+                // swap arr[j] and arr[j + 1]
+                item temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
@@ -82,15 +89,21 @@ int main() {
     PriorityQueue pq;
     pq.enqueue(50, 3);
     pq.enqueue(34, 7);
-    pq.enqueue(89, 1);
+    pq.enqueue(89, 2);
     pq.enqueue(42, 8);
-    pq.enqueue(69, 1);   // Sorted in priority order
+    pq.enqueue(69, 1);
 
-    pq.dequeue();
-    pq.dequeue();
-    pq.dequeue();
-    pq.dequeue();
-    pq.dequeue();
+    // Sorted in priority order
+    pq.display();
+
+    cout << pq.dequeue() << endl;
+    cout << pq.dequeue() << endl;
+    cout << pq.dequeue() << endl;
+    cout << pq.dequeue() << endl;
+    cout << pq.dequeue() << endl;
+
+    // Items popped in priority order
+    pq.display();
 
     return 0;
 }
