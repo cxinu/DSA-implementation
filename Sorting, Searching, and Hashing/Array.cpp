@@ -26,7 +26,7 @@ class Array {
 
     // Searching Algorithms
     int linearSearch(int value);
-    int binarySearch(int value);   // overloaded for default parameters
+    int binarySearch(int value);
     int binarySearch(int value, int left, int right);
 };
 

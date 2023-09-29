@@ -1,6 +1,6 @@
 #include "Array.cpp"
 
-// Using While loop
+// non-recursive algorithm
 int Array::binarySearch(int value) {
     int left = 0;
     int right = size - 1;
@@ -19,8 +19,7 @@ int Array::binarySearch(int value) {
     return -1;
 }
 
-/*
-// Using Recurssion
+// recursive algorithm
 int Array::binarySearch(int value, int left, int right) {
     if (left > right) {
         return -1;
@@ -37,11 +36,9 @@ int Array::binarySearch(int value, int left, int right) {
     }
 }
 
-int Array::binarySearch(int value) { return binarySearch(value, 0, size - 1); }
- */
-
 int main() {
-    Array arr(5);
+    int size = 5;
+    Array arr(size);
 
     arr.insert(0);
     arr.insert(2);
@@ -51,9 +48,15 @@ int main() {
 
     arr.display();
 
+    // non-recursive algorithm
     cout << arr.binarySearch(2) << endl;
     cout << arr.binarySearch(6) << endl;
     cout << arr.binarySearch(4) << endl;
+
+    // recursive algorithm
+    cout << arr.binarySearch(2, 0, size - 1) << endl;
+    cout << arr.binarySearch(6, 0, size - 1) << endl;
+    cout << arr.binarySearch(4, 0, size - 1) << endl;
 
     return 0;
 }
