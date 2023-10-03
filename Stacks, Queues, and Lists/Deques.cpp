@@ -12,16 +12,16 @@ class Deque {
   public:
     Deque() { front = rear = -1; };
 
-    void pushFront(int x);
-    void pushBack(int x);
-    int popFront();
-    int popBack();
+    void insertFront(int x);
+    void insertRear(int x);
+    int deleteFront();
+    int deleteRear();
 
     void display();
 };
 
 // Remove this for input restricted deque
-void Deque::pushFront(int x) {
+void Deque::insertFront(int x) {
     if (front == 0) {
         cout << "Deque front is full" << endl;
         return;
@@ -36,7 +36,7 @@ void Deque::pushFront(int x) {
     arr[front] = x;
 }
 
-void Deque::pushBack(int x) {
+void Deque::insertRear(int x) {
     if (rear == MAX_SIZE - 1) {
         cout << "Deque back is full" << endl;
         return;
@@ -51,7 +51,7 @@ void Deque::pushBack(int x) {
     arr[rear] = x;
 }
 
-int Deque::popFront() {
+int Deque::deleteFront() {
     if (front == -1) {
         cout << "Deque is empty" << endl;
         return -1;
@@ -69,7 +69,7 @@ int Deque::popFront() {
 }
 
 // Remove this for output restricted deque
-int Deque::popBack() {
+int Deque::deleteRear() {
     if (front == -1) {
         cout << "Deque is empty." << endl;
         return -1;
@@ -102,19 +102,19 @@ void Deque::display() {
 int main() {
     Deque dq;
 
-    dq.pushFront(1);
-    dq.pushBack(2);
-    dq.pushFront(3);
-    dq.pushBack(4);
-    dq.pushBack(5);
+    dq.insertFront(1);
+    dq.insertRear(2);
+    dq.insertFront(3);
+    dq.insertRear(4);
+    dq.insertRear(5);
     dq.display();
 
-    dq.popBack();
-    dq.popFront();
+    dq.deleteRear();
+    dq.deleteFront();
     dq.display();
 
-    dq.pushBack(9);
-    dq.pushFront(3);
+    dq.insertRear(9);
+    dq.insertFront(3);
     dq.display();
 
     return 0;
