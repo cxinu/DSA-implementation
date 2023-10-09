@@ -44,6 +44,7 @@ This folder contains the implementation of sorting, searching, and hashing algor
 #### Sorting
 
 - [`BubbleSort.cpp`](Sorting,%20Searching,%20and%20Hashing/BubbleSort.cpp): Implementation of bubble sort algorithm.
+- [`SelectionSort.cpp`](Sorting,%20Searching,%20and%20Hashing/SelectionSort.cpp): Implementation of selection sort algorithm.
 
 ## Trees and Graphs
 
