@@ -7,11 +7,8 @@ void Array::selectionSort() {
             if (arr[min] > arr[j])
                 min = j;
         }
-        if (min != i) {
-            int temp = arr[i];
-            arr[i] = arr[min];
-            arr[min] = temp;
-        }
+        if (min != i)
+            swap(arr[i], arr[min]);
     }
 }
 
