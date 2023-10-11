@@ -20,7 +20,8 @@ class Array {
     void bubbleSort();
     void selectionSort();
     void insertionSort();
-    void mergSort();
+    void mergeSort(int l, int r);
+    void merge(int l, int m, int r);
     void quickSort();
     void heapSort();
     void radixSort();
