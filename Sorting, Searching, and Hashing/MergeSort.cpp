@@ -1,6 +1,6 @@
 #include "Array.cpp"
 
-void Array::merge(int l, int m, int r) {
+void merge(int arr[], int l, int m, int r) {
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -19,8 +19,7 @@ void Array::merge(int l, int m, int r) {
         if (L[i] <= R[j]) {
             arr[k] = L[i];
             i++;
-        }
-        else {
+        } else {
             arr[k] = R[j];
             j++;
         }
@@ -44,12 +43,13 @@ void Array::mergeSort(int l, int r) {
     if (l >= r) {
         return;
     }
+
     int m = l + (r - l) / 2;
     mergeSort(l, m);
     mergeSort(m + 1, r);
-    merge(l, m, r);
-}
 
+    merge(arr, l, m, r);
+}
 
 int main() {
     int n = 7;
