@@ -21,6 +21,7 @@ class Array {
     void selectionSort();
     void insertionSort();
     void mergeSort(int l, int r);
+    void merge(int l, int m, int r);
     void quickSort();
     void heapSort();
     void radixSort();
