@@ -1,67 +1,60 @@
 #include "Array.cpp"
 
 void merge(int arr[], int l, int m, int r) {
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
+    int temp[r - l + 1];
+    int i = l;
+    int j = m + 1;
+    int k = 0;
 
-    int L[n1], R[n2];
-
-    for (i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-    for (j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j];
-
-    i = 0;
-    j = 0;
-    k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
+    while (i <= m && j <= r) {
+        if (arr[i] <= arr[j]) {
+            temp[k] = arr[i];
             i++;
         } else {
-            arr[k] = R[j];
+            temp[k] = arr[j];
             j++;
         }
         k++;
     }
 
-    while (i < n1) {
-        arr[k] = L[i];
+    while (i <= m) {
+        temp[k] = arr[i];
         i++;
         k++;
     }
 
-    while (j < n2) {
-        arr[k] = R[j];
+    while (j <= r) {
+        temp[k] = arr[j];
         j++;
         k++;
     }
+
+    for (int i = l; i <= r; i++)
+        arr[i] = temp[i - l];
 }
 
 void Array::mergeSort(int l, int r) {
-    if (l >= r) {
+    if (l >= r)
         return;
-    }
 
-    int m = l + (r - l) / 2;
-    mergeSort(l, m);
-    mergeSort(m + 1, r);
+    int mid = (l + r) / 2;
+    mergeSort(l, mid);
+    mergeSort(mid + 1, r);
 
-    merge(arr, l, m, r);
+    merge(arr, l, mid, r);
 }
 
 int main() {
     int n = 7;
     Array arr(n);
 
-    arr.insert(48);
-    arr.insert(28);
-    arr.insert(34);
-    arr.insert(89);
-    arr.insert(29);
-    arr.insert(93);
-    arr.insert(19);
+    arr.insert(4);
+    arr.insert(2);
+    arr.insert(3);
+    arr.insert(8);
+    arr.insert(6);
+    arr.insert(9);
+    arr.insert(5);
     arr.display();
 
     arr.mergeSort(0, n - 1);
