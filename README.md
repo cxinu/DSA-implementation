@@ -45,12 +45,14 @@ This folder contains the implementation of sorting, searching, and hashing algor
 
 - [`BubbleSort.cpp`](Sorting,%20Searching,%20and%20Hashing/BubbleSort.cpp): Implementation of bubble sort algorithm.
 - [`SelectionSort.cpp`](Sorting,%20Searching,%20and%20Hashing/SelectionSort.cpp): Implementation of selection sort algorithm.
+- [`InsertionSort.cpp`](Sorting,%20Searching,%20and%20Hashing/InsertionSort.cpp): Implementation of insertion sort algorithm.
+- [`MergeSort.cpp`](Sorting,%20Searching,%20and%20Hashing/MergeSort.cpp): Implementation of merge sort algorithm.
 
 ## Trees and Graphs
 
 This folder contains the implementation of tree and graph data structures. The code files are as follows:
 
-- `BinaryTree.cpp`: To be implemented.
+- [`BinaryTree.cpp`](Trees%20and%20Graphs/BinaryTree.cpp): Implementation of binary tree algorithm.
 - `AVLTree.cpp`: To be implemented.
 - `Graph.cpp`: To be implemented.
 
