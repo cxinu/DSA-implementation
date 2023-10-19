@@ -5,11 +5,12 @@ using namespace std;
 class Array {
   private:
     int *arr;
-    int max;
+    int MAX;
     int size;
 
   public:
     Array(int size);
+    Array(int static_arr[], int size);
     ~Array();
 
     void insert(int value);
@@ -20,8 +21,8 @@ class Array {
     void bubbleSort();
     void selectionSort();
     void insertionSort();
-    void mergeSort(int l, int r);
-    void quickSort();
+    void mergeSort(int left, int right);
+    void quickSort(int low, int high);
     void heapSort();
     void radixSort();
 
@@ -32,13 +33,23 @@ class Array {
 };
 
 Array::Array(int size) {
-    arr = new int[size];
-    max = size;
+    MAX = size;
     this->size = 0;
+    arr = new int[MAX];
+}
+
+Array::Array(int static_arr[], int size) {
+    MAX = size;
+    this->size = 0;
+    arr = new int[MAX];
+    for (int i = 0; i < MAX; i++) {
+        arr[i] = static_arr[i];
+        this->size++;
+    }
 }
 
 void Array::insert(int value) {
-    if (size == max) {
+    if (size == MAX) {
         cout << "Array full" << endl;
         return;
     }

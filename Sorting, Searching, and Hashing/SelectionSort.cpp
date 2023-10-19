@@ -13,15 +13,10 @@ void Array::selectionSort() {
 }
 
 int main() {
-    Array arr(7);
-    arr.insert(48);
-    arr.insert(28);
-    arr.insert(34);
-    arr.insert(89);
-    arr.insert(29);
-    arr.insert(93);
-    arr.insert(19);
+    int nums[] = {3, 55, 6, 2, 6, 2};
+    int n = sizeof(nums) / sizeof(nums[0]);
 
+    Array arr(nums, n);
     arr.display();
 
     arr.selectionSort();

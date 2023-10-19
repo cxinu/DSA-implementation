@@ -37,15 +37,10 @@ int Array::binarySearch(int value, int left, int right) {
 }
 
 int main() {
-    int size = 5;
-    Array arr(size);
+    int nums[] = {3, 55, 6, 2, 6, 2};
+    int n = sizeof(nums) / sizeof(nums[0]);
 
-    arr.insert(0);
-    arr.insert(2);
-    arr.insert(3);
-    arr.insert(5);
-    arr.insert(6);
-
+    Array arr(nums, n);
     arr.display();
 
     // non-recursive algorithm
