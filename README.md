@@ -52,7 +52,7 @@ This folder contains the implementation of sorting, searching, and hashing algor
 
 This folder contains the implementation of tree and graph data structures. The code files are as follows:
 
-- `BinaryTree.cpp`: To be implemented.
+- [`BinaryTree.cpp`](Trees%20and%20Graphs/BinaryTree.cpp): Implementation of binary tree algorithm.
 - `AVLTree.cpp`: To be implemented.
 - `Graph.cpp`: To be implemented.
 
