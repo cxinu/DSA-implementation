@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 struct node {
@@ -8,19 +8,20 @@ struct node {
 
 class binaryTree {
     node *root;
-public:
+
+  public:
     binaryTree() { root = NULL; }
     void insert(int);
-    void traversal(node*);
-    void preorder(node*);
-    void inorder(node*);
-    void postorder(node*);
-    void remove(node*);
+    void traversal(node *);
+    void preorder(node *);
+    void inorder(node *);
+    void postorder(node *);
+    void remove(node *);
     ~binaryTree();
 };
 
 void binaryTree::insert(int num) {
-    node* rn = new node;
+    node *rn = new node;
     rn->d = num;
     rn->r = rn->l = NULL;
 
@@ -29,8 +30,8 @@ void binaryTree::insert(int num) {
         return;
     }
 
-    node* temp = root;
-    node* prev;
+    node *temp = root;
+    node *prev;
 
     while (temp != NULL) {
         prev = temp;
@@ -46,34 +47,34 @@ void binaryTree::insert(int num) {
         prev->r = rn;
 }
 
-void binaryTree::traversal(node* root) {
+void binaryTree::traversal(node *root) {
     preorder(root);
     inorder(root);
     postorder(root);
 }
 
-void binaryTree::preorder(node* rr) {
+void binaryTree::preorder(node *rr) {
     if (rr == NULL)
         return;
-    
+
     cout << rr->d << " ";
     preorder(rr->l);
     preorder(rr->r);
 }
 
-void binaryTree::inorder(node* rr) {
+void binaryTree::inorder(node *rr) {
     if (rr == NULL)
         return;
-    
+
     inorder(rr->l);
     cout << rr->d << " ";
     inorder(rr->r);
 }
 
-void binaryTree::postorder(node* rr) {
+void binaryTree::postorder(node *rr) {
     if (rr == NULL)
         return;
-    
+
     postorder(rr->l);
     postorder(rr->r);
     cout << rr->d << " ";

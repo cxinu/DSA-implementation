@@ -47,6 +47,7 @@ This folder contains the implementation of sorting, searching, and hashing algor
 - [`SelectionSort.cpp`](Sorting,%20Searching,%20and%20Hashing/SelectionSort.cpp): Implementation of selection sort algorithm.
 - [`InsertionSort.cpp`](Sorting,%20Searching,%20and%20Hashing/InsertionSort.cpp): Implementation of insertion sort algorithm.
 - [`MergeSort.cpp`](Sorting,%20Searching,%20and%20Hashing/MergeSort.cpp): Implementation of merge sort algorithm.
+- [`QuickSort.cpp`](Sorting,%20Searching,%20and%20Hashing/QuickSort.cpp): Implementation of quick sort algorithm.
 
 ## Trees and Graphs
 
